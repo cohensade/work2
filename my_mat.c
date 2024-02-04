@@ -28,7 +28,7 @@ int hasRoute(int matrix[10][10], int start, int end) {
 
     void waze(int matrix[10][10],int start,int end){
     if(hasRoute(matrix,start,end)==0){
-        printf("%d",-1);
+        printf("%d\n",-1);
     }else{
       for (int k = 1; k < 10; k++) {
       for (int i = 0; i < 10; i++) {
@@ -37,7 +37,7 @@ int hasRoute(int matrix[10][10], int start, int end) {
       }
       }
       }
-       printf("%d",matrix[start][end]);
+       printf("%d\n",matrix[start][end]);
        
         
     }

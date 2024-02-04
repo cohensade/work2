@@ -20,10 +20,10 @@ int main()
             {
                 scanf("%d%d", &i, &j);
                 if(hasRoute(matrix,i,j)){
-                      printf("true\n");
+                      printf("True\n");
    }
         else
-                    printf("false\n");
+                    printf("False\n");
                 break;
             }
 
