@@ -1,8 +1,8 @@
-all: mains
+all: connections
 
 
-mains: main.o libmath.a
-	gcc -Wall -g main.o libmath.a -o mains
+connections: main.o libmath.a
+	gcc -Wall -g main.o libmath.a -o connections
 
 main.o: main.c my_mat.h
 	gcc -Wall -g -c main.c
@@ -15,6 +15,6 @@ libmath.a: my_mat.o
 	ar -rcs libmath.a my_mat.o
 
 clean:
-	rm -f *.o *.a mains
+	rm -f *.o *.a connections
 
 .PHONY: all clean
