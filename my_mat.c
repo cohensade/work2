@@ -30,14 +30,25 @@ int hasRoute(int matrix[10][10], int start, int end) {
     if(hasRoute(matrix,start,end)==0){
         printf("%d\n",-1);
     }else{
+        int tempmatrix[10][10];
+        for (int x = 0; x < count; x++)
+        {
+            for (int y = 0; y < count; y++)
+        {
+          tempmatrix[x][y]=matrix[x][y];  
+        }
+        
+            
+        }
+        
       for (int k = 1; k < 10; k++) {
       for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
-          matrix[i][j]=min(matrix[i][j],matrix[i][k]+matrix[k][j]);
+          tempmatrix[i][j]=min(tempmatrix[i][j],tempmatrix[i][k]+tempmatrix[k][j]);
       }
       }
       }
-       printf("%d\n",matrix[start][end]);
+       printf("%d\n",tempmatrix[start][end]);
        
         
     }

@@ -5,7 +5,7 @@ int main()
 {   
     int i,j;
     int matrix[10][10];
-    char ot;
+    char ot = '0';
      while(ot != 'D'){
     scanf(" %c", &ot);
         switch (ot)
