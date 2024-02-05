@@ -1,5 +1,6 @@
-#include <stdio.h>
 #include "my_mat.h"
+#include <stdio.h>
+
 
 
 void getMatrixValues(int matrix[10][10]) {
