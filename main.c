@@ -58,6 +58,12 @@ case EOF:
         
         break;
 }
+default:
+{
+        // Handle invalid input
+        break;
+}
+
         }
         
     }
