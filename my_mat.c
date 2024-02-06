@@ -1,11 +1,13 @@
-#include "my_mat.h"
 #include <stdio.h>
+#include "my_mat.h"
+#define INF 99999
 
-
-
-void getMatrixValues(int matrix[10][10]) {
-    for (int i = 0; i < 10; ++i){
-        for (int j = 0; j < 10; ++j){
+void getMatrixValues(int matrix[10][10])
+{
+    for (int i = 0; i < 10; ++i)
+    {
+        for (int j = 0; j < 10; ++j)
+        {
             scanf("%d", &matrix[i][j]);
         }
     }
@@ -13,45 +15,71 @@ void getMatrixValues(int matrix[10][10]) {
 
 
 // Function to check if there is a route between two vertices
-int hasRoute(int matrix[10][10], int start, int end) {
-   return  matrix[start][end] != 0;
-}
+int hasRoute(int matrix[10][10], int start, int end)
+{
+    int distance = waze(matrix, start, end);
 
- int min(int i,int j){
-        if(i<=j){
-        return i;
-        }
-        else
-        {
-            return j;
-        }
+    if (distance == 0)
+    {
+      
+        return 0;
     }
-
-    void waze(int matrix[10][10],int start,int end){
-    if(hasRoute(matrix,start,end)==0){
-        printf("%d\n",-1);
-    }else{
-        int tempmatrix[10][10];
-        for (int x = 0; x < 10; x++)
-        {
-            for (int y = 0; y < 10; y++)
-        {
-          tempmatrix[x][y]=matrix[x][y];  
-        }
-        
-            
-        }
-        
-      for (int k = 1; k < 10; k++) {
-      for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-          tempmatrix[i][j]=min(tempmatrix[i][j],tempmatrix[i][k]+tempmatrix[k][j]);
-      }
-      }
-      }
-       printf("%d\n",tempmatrix[start][end]);
+    else
+    {
        
-        
+        return 1;
     }
 }
+
+
+
+   
+
+// ...
+
+int waze(int matrix[10][10], int start, int end)
+{
+    if (start==end){
+        matrix[start][end]=0;
+        return matrix[start][end];
+    }
+    else
+    {
+    for (int k = 0; k < 10; k++)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                // Skip if any of the vertices are unreachable
+                if (matrix[i][k] == 0 || matrix[k][j] == 0)
+                    continue;
+
+                // Update the distance if the new path is shorter
+                if (matrix[i][j] == 0 || (matrix[i][j] > (matrix[i][k] + matrix[k][j])))
+                    matrix[i][j] = matrix[i][k] + matrix[k][j];
+            }
+        }
+    }
+    
+    
+    return matrix[start][end];
+    }
+}
+
+
+
+
+
+int min(int i,int j){
+    if(i>=j){
+        return j;
+    }
+    else
+    {
+        return i;
+    }
+}
+
+
 

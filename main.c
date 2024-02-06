@@ -2,43 +2,55 @@
 #include <stdio.h>
 
 int main()
-{   
-    int i,j;
+{
+    int i, j;
     int matrix[10][10];
-    char ot = '0';
-     while(ot != 'D'){
-    scanf(" %c", &ot);
+    char ot ='A';
+    while (ot != 'D')
+    {
+        scanf(" %c", &ot);
         switch (ot)
         {
-            case 'A':
-            {
-                getMatrixValues(matrix);
-                break;
-            }
+        case 'A':
+        {
+            getMatrixValues(matrix);
+            break;
+        }
 
-            case 'B':
+        case 'B':
+        {
+            scanf("%d%d", &i, &j);
+            if (hasRoute(matrix, i, j) == 0)
             {
-                scanf("%d%d", &i, &j);
-                if(hasRoute(matrix,i,j)){
-                      printf("True\n");
-   }
-        else
-                    printf("False\n");
-                break;
+                printf("False\n");
             }
-
-            case 'C':
+            else
             {
-                scanf("%d%d", &i, &j);
-                waze(matrix,i,j);
-                break;
+                printf("True\n");
             }
+            break;
+        }
 
-            case 'D':
-                break;
+        case 'C':
+{
+    scanf("%d%d", &i, &j);
+    int distance = waze(matrix, i, j);
+    if (distance == 0)
+    {
+        printf("-1\n");
+    }
+    else
+    {
+        printf("%d\n", distance);
+    }
+    break;
+}
+
+
+        case 'D':
+            break;
         }
     }
 
-    
     return 0;
 }
