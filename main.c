@@ -7,7 +7,7 @@ int main()
     int i, j;
     int matrix[SIZE][SIZE];
     char ot ='v'; //init the char of cases
-    while (ot != 'D' || ot != EOF)//if its not D or EOF countinue the prog   
+    while (ot != 'D' && ot != EOF)//if its not D or EOF countinue the prog   
     {
         scanf(" %c", &ot);
         switch (ot)
