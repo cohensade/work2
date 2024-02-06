@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include "my_mat.h"
-#define INF 99999
+#define SIZE 10
 
-void getMatrixValues(int matrix[10][10])
+void getMatrixValues(int matrix[SIZE][SIZE])
 {
-    for (int i = 0; i < 10; ++i)
+    //get the values for the matrix from the user
+    for (int i = 0; i < SIZE; ++i)
     {
-        for (int j = 0; j < 10; ++j)
+        for (int j = 0; j < SIZE; ++j)
         {
             scanf("%d", &matrix[i][j]);
         }
@@ -15,8 +16,9 @@ void getMatrixValues(int matrix[10][10])
 
 
 // Function to check if there is a route between two vertices
-int hasRoute(int matrix[10][10], int start, int end)
+int hasRoute(int matrix[SIZE][SIZE], int start, int end)
 {
+    //if there is no way print false else true
     int distance = waze(matrix, start, end);
 
     if (distance == 0)
@@ -35,9 +37,9 @@ int hasRoute(int matrix[10][10], int start, int end)
 
    
 
-// ...
 
-int waze(int matrix[10][10], int start, int end)
+//Function to return shortest path by value if there is no path return 0
+int waze(int matrix[SIZE][SIZE], int start, int end)
 {
     if (start==end){
         matrix[start][end]=0;
@@ -45,11 +47,11 @@ int waze(int matrix[10][10], int start, int end)
     }
     else
     {
-    for (int k = 0; k < 10; k++)
+    for (int k = 0; k < SIZE; k++)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < SIZE; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < SIZE; j++)
             {
                 // Skip if any of the vertices are unreachable
                 if (matrix[i][k] == 0 || matrix[k][j] == 0)
@@ -62,7 +64,6 @@ int waze(int matrix[10][10], int start, int end)
         }
     }
     
-    
     return matrix[start][end];
     }
 }
@@ -71,15 +72,8 @@ int waze(int matrix[10][10], int start, int end)
 
 
 
-int min(int i,int j){
-    if(i>=j){
-        return j;
-    }
-    else
-    {
-        return i;
-    }
-}
+
+
 
 
 
