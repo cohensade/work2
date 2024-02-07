@@ -19,21 +19,10 @@ int main(){
             scanf(" %d", &weights[i]);
           
         }
-        //  for (int i = 0; i < SIZE_ITEMS; i++)
-        // {
-          
-           
-        // }
-        //  for (int i = 0; i < SIZE_ITEMS; i++)
-        // {
-        //    scanf(" %d", &weights[i]);
-        
-        // }
     
     int ans = knapSack(weights,values,selected);
     printf("Maximum profit: %d\n",ans);
     int count=0;
-   // for (int i = SIZE_ITEMS; i >=0 ; i--) {
     for (int i = 0; i <=SIZE_ITEMS ; i++) {
         if (selected[i] ==1){
             result[count] = items[i];
@@ -49,11 +38,7 @@ int main(){
       
         }
         printf("%c" ,result[count-1]);
-        
-    
-   // printf("\n");
-
-
+     
     return 0;
 }
 
