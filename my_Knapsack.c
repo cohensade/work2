@@ -41,17 +41,17 @@ int main(){
         }
         }
       
-    printf("Items that give the maximum profit: [");
+    printf("Selected items: ");
    
     for (int i = 0; i < count-1; i++) {
-            printf("%c, ", result[i]);
+            printf("%c ", result[i]);
             
       
         }
-        printf("%c", result[count-1]);
+        printf("%c" ,result[count-1]);
         
     
-    printf("]\n");
+   // printf("\n");
 
 
     return 0;
