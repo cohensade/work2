@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "my_mat.h"
 #define SIZE 10
+#define CAPACITY 20
 
 void getMatrixValues(int matrix[SIZE][SIZE])
 {
@@ -67,6 +68,61 @@ int waze(int matrix[SIZE][SIZE], int start, int end)
     return matrix[start][end];
     }
 }
+
+
+int max(int a, int b) {
+    if (a>=b)
+    {
+        return a;
+    }
+    else{
+        return b;
+    }
+}
+    
+int knapSack(int weights[SIZE_ITEMS], int values[SIZE_ITEMS], int selected_bool[SIZE_ITEMS]) {
+    int tavla[SIZE_ITEMS + 1][CAPACITY + 1];
+
+    // init the table by dynamic program 
+    for (int i = 0; i <= SIZE_ITEMS; i++) {
+        for (int w = 0; w <= CAPACITY; w++) {
+            if (i == 0 || w == 0) { //  no items or no capacity
+                tavla[i][w] = 0;
+            } else if (weights[i - 1] <= w) { // Item can be included in the knapsack
+                tavla[i][w] = max(values[i - 1] + tavla[i - 1][w - weights[i - 1]], tavla[i - 1][w]);
+            } else {
+                // no place for item
+                tavla[i][w] = tavla[i - 1][w];
+            }
+        }
+    }
+
+    // update selected items in the array
+    int i = SIZE_ITEMS, w = CAPACITY;
+    while (i > 0 && w > 0) {
+        if (tavla[i][w] != tavla[i - 1][w]) {
+            // item i - 1 is selected
+            selected_bool[i - 1] = 1;
+            w -= weights[i - 1];
+        }
+        i--;
+    }
+
+    
+
+    // Return maximum value
+    return tavla[SIZE_ITEMS][CAPACITY];
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
